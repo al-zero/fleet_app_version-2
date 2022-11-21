@@ -52,8 +52,4 @@ public class ApplicationController {
         return "/parameters/index";
     }
 
-
-
-
-
 }
