@@ -1,8 +1,8 @@
 package com.example.fleet_app_version2.parameters.models;
 
+import com.example.fleet_app_version2.hr.Employee;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.kindsonthegenius.fleetmsv2.hr.models.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -30,7 +30,7 @@ public class Supplier {
 	
 	@ManyToOne
 	@JoinColumn(name="countryid", insertable=false, updatable=false)
-	private com.kindsonthegenius.fleetmsv2.parameters.models.Country country;
+	private Country country;
 	private Integer countryid;
 	
 	@ManyToOne
