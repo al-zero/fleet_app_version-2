@@ -5,9 +5,9 @@ import com.example.fleet_app_version2.parameters.services.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class CountryController {
@@ -32,4 +32,31 @@ public class CountryController {
             countryService.save(country);
             return  "redirect:/countries";
     }
+
+    @RequestMapping(value = "/countries/delete/{id}", method =  {RequestMethod.GET, RequestMethod.DELETE})
+    public String delete(@PathVariable Integer id){
+        countryService.delete(id);
+        return "redirect:/countries";
+    }
+
+    @GetMapping("/countryEdit/{id}")
+    public String editCountry(@PathVariable Integer id,Model model){
+        Country country = countryService.getById(id);
+        model.addAttribute("country", country);
+        return "parameters/countryEdit";
+    }
+
+    @GetMapping("/countryDetails/{id}")
+    public String countryDetails(@PathVariable Integer id,Model model){
+        Country country = countryService.getById(id);
+        model.addAttribute("country", country);
+        return "parameters/countryDetails";
+    }
+
+//
+//    @RequestMapping(value = "/countries/update/{id}", method =  {RequestMethod.GET, RequestMethod.PUT})
+//    public String update(Country country){
+//        countryService.save(country);
+//        return "redirect:/countries";
+//    }
 }
