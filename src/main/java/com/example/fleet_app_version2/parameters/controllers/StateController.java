@@ -40,24 +40,24 @@ public class StateController {
             return  "redirect:/states";
     }
 
-    @RequestMapping(value = "/states/delete/{id}", method =  {RequestMethod.GET, RequestMethod.DELETE})
+    @RequestMapping(value = "/state/delete/{id}", method =  {RequestMethod.GET, RequestMethod.DELETE})
     public String delete(@PathVariable Integer id){
         stateService.delete(id);
         return "redirect:/states";
     }
 
-    @GetMapping("/StateEdit/{id}")
+    @GetMapping("/stateEdit/{id}")
     public String editState(@PathVariable Integer id,Model model){
         State state = stateService.getById(id);
         model.addAttribute("state", state);
-        return "parameters/StateEdit";
+        return "parameters/stateEdit";
     }
 
-    @GetMapping("/StateDetails/{id}")
+    @GetMapping("/stateDetails/{id}")
     public String StateDetails(@PathVariable Integer id,Model model){
         State state = stateService.getById(id);
         model.addAttribute("state", state);
-        return "parameters/StateDetails";
+        return "parameters/stateDetails";
     }
 
 //
