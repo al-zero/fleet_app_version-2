@@ -62,7 +62,7 @@
                                     <label for="ddlCountryAdd" class="col-sm-4 col-form-label">Country: </label>
                                     <div class="col-sm-6">
                                         <select class="form-control" id="ddlCountryAdd" name="countryid" readonly>
-                                            <option>-SELECT-</option>
+                                            <option>--SELECT--</option>
                                             <option th:each="country : ${countries}"
                                                     th:value="${country.id}"
                                                     th:selected="${country.id} == ${supplier.countryid}?True: False"

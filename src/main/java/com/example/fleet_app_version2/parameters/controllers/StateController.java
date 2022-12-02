@@ -29,6 +29,7 @@ public class StateController {
 
     @GetMapping("/stateAdd")
     public String addState(Model model){
+
         List<Country> countryList = countryService.getAllCountries();
         model.addAttribute("countries", countryList );
         return "parameters/stateAdd";
@@ -49,6 +50,9 @@ public class StateController {
     @GetMapping("/stateEdit/{id}")
     public String editState(@PathVariable Integer id,Model model){
         State state = stateService.getById(id);
+        Country countries = countryService.getById(id);
+
+        model.addAttribute("countries", countries);
         model.addAttribute("state", state);
         return "parameters/stateEdit";
     }
@@ -56,7 +60,10 @@ public class StateController {
     @GetMapping("/stateDetails/{id}")
     public String StateDetails(@PathVariable Integer id,Model model){
         State state = stateService.getById(id);
+        Country countries = countryService.getById(id);
+
         model.addAttribute("state", state);
+        model.addAttribute("countries", countries);
         return "parameters/stateDetails";
     }
 
