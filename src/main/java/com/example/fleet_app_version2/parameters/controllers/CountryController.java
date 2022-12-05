@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Optional;
+
 
 @Controller
 public class CountryController {
@@ -52,6 +52,15 @@ public class CountryController {
         model.addAttribute("country", country);
         return "parameters/countryDetails";
     }
+    
+    // Get country by id and return it as json
+    @GetMapping("/country/{id}")
+    @ResponseBody
+    public  Country getCountry(@PathVariable Integer id){
+        return countryService.getById(id);
+    }
+
+
 
 //
 //    @RequestMapping(value = "/countries/update/{id}", method =  {RequestMethod.GET, RequestMethod.PUT})

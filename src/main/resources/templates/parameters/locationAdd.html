@@ -18,7 +18,7 @@
         </div>
     <div class="container" style="width: 70%">
     <div class="row justify-content-center" >
-        <form class="form-horizontal" th:action="@{/parameters/locations}" method="post">
+        <form class="form-horizontal" th:action="@{/locations}" method="post">
         <section class="panel">
             <header class="panel-heading">
                Add New Location Record
@@ -108,7 +108,7 @@
 
                 var countryid = $(this).val(); //Line 4
 
-                var href = "http://localhost:8081/parameters/country/" + countryid //Line 5
+                var href = "http://127.0.0.1:8082/country/" + countryid //Line 5
 
                 $.get(href, function (country, status) { // Line 6
 

@@ -18,4 +18,15 @@ public class LocationService {
     public List<Location> getLocations(){
         return locationRepository.findAll();
     }
+
+    public void save(Location location){
+        locationRepository.save(location);
+    }
+
+    public void delete(Integer id){
+        locationRepository.deleteById(id);
+    }
+    public void getById(Integer id){
+        locationRepository.findById(id).orElse(null);
+    }
 }
