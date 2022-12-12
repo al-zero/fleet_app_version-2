@@ -57,13 +57,7 @@ public class ClientController {
     @GetMapping("/client/edit/{id}")
     public String editClient(@PathVariable Integer id, Model model){
        // clientsService.editClient(id);
-        State state = stateService.getById(id);
-        Country countries = countryService.getById(id);
-        Client client = clientsService.getByClientById(id);
-
-        model.addAttribute("states", state);
-        model.addAttribute("countries", countries);
-        model.addAttribute("client", client);
+        myState(id, model);
 
         return "parameters/clientEdit";
     }
@@ -71,6 +65,12 @@ public class ClientController {
     @GetMapping("/client/details/{id}")
     public String detailsClient(@PathVariable Integer id, Model model){
         // clientsService.editClient(id);
+        myState(id, model);
+
+        return "parameters/clientDetails";
+    }
+
+    private void myState(@PathVariable Integer id, Model model) {
         State state = stateService.getById(id);
         Country countries = countryService.getById(id);
         Client client = clientsService.getByClientById(id);
@@ -78,8 +78,6 @@ public class ClientController {
         model.addAttribute("states", state);
         model.addAttribute("countries", countries);
         model.addAttribute("client", client);
-
-        return "parameters/clientDetails";
     }
 
 
