@@ -10,8 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -50,5 +49,34 @@ public class SupplierController {
     public String saveSupplier(Supplier supplier){
         supplierService.save(supplier);
         return "redirect:/suppliers";
+    }
+
+    @RequestMapping(value = "/suppliers/delete/{id}", method = {RequestMethod.DELETE, RequestMethod.GET })
+    public String deleteSupplier(@PathVariable Integer id){
+            supplierService.delete(id);
+            return "redirect:/suppliers";
+    }
+
+    @GetMapping("/supplier/edit/{id}")
+    public String editSupplier(@PathVariable Integer id, Model model){
+       mySupplier(id,model);
+        return "parameters/supplierEdit";
+    }
+
+
+    @GetMapping("/supplier/details/{id}")
+    public String detailsSupplier(@PathVariable Integer id, Model model){
+        mySupplier(id, model);
+        return "parameters/supplierDetails";
+    }
+
+    public void mySupplier(@PathVariable Integer id, Model model){
+        Supplier supplier = supplierService.findSupplierById(id);
+        Country country = countryService.getById(id);
+        State state = stateService.getById(id);
+
+        model.addAttribute("states",state);
+        model.addAttribute("supplier", supplier);
+        model.addAttribute("countries", country);
     }
 }
