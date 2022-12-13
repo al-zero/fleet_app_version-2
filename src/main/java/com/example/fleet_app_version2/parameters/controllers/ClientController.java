@@ -72,7 +72,7 @@ public class ClientController {
 
     private void myState(@PathVariable Integer id, Model model) {
         State state = stateService.getById(id);
-        Country countries = countryService.getById(id);
+        Country countries = countryService.findById(id);
         Client client = clientsService.getByClientById(id);
 
         model.addAttribute("states", state);

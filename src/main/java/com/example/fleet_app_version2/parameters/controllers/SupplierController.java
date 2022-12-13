@@ -7,7 +7,6 @@ import com.example.fleet_app_version2.parameters.services.CountryService;
 import com.example.fleet_app_version2.parameters.services.StateService;
 import com.example.fleet_app_version2.parameters.services.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -72,7 +71,7 @@ public class SupplierController {
 
     public void mySupplier(@PathVariable Integer id, Model model){
         Supplier supplier = supplierService.findSupplierById(id);
-        Country country = countryService.getById(id);
+        Country country = countryService.findById(id);
         State state = stateService.getById(id);
 
         model.addAttribute("states",state);

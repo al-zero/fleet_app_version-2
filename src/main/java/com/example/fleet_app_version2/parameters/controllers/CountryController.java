@@ -41,14 +41,14 @@ public class CountryController {
 
     @GetMapping("/countryEdit/{id}")
     public String editCountry(@PathVariable Integer id,Model model){
-        Country country = countryService.getById(id);
+        Country country = countryService.findById(id);
         model.addAttribute("country", country);
         return "parameters/countryEdit";
     }
 
     @GetMapping("/countryDetails/{id}")
     public String countryDetails(@PathVariable Integer id,Model model){
-        Country country = countryService.getById(id);
+        Country country = countryService.findById(id);
         model.addAttribute("country", country);
         return "parameters/countryDetails";
     }
@@ -57,7 +57,7 @@ public class CountryController {
     @GetMapping("/country/{id}")
     @ResponseBody
     public  Country getCountry(@PathVariable Integer id){
-        return countryService.getById(id);
+        return countryService.findById(id);
     }
 
 
